@@ -1,2 +1,2 @@
-writeToFile = false
-levelOfLog = error
+writeToFile = true
+levelOfLog = info

@@ -2,61 +2,42 @@ package org.example;
 
 import lombok.Data;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 @Data
-public class Logger {
-    LocalDate date;
-    LocalTime time;
-    String message;
-    Title title;
+public class Logger implements Closeable {
+    private OutputStream stream;
+    private LocalDate dateNow = LocalDate.now();
+    private LocalTime timeNow = LocalTime.now().truncatedTo(ChronoUnit.SECONDS);
+    private boolean isToFile;
+    private LogLevel level;
+
 
 
     public Logger() {
-        this.date = LocalDate.now();
-        this.time = LocalTime.now().truncatedTo(ChronoUnit.SECONDS);;
-
-    }
-
-    public void debug(Boolean toFile) {
-        chooseOutput(toFile, message);
-    }
-
-    public void info(Boolean toFile) {
-        chooseOutput(toFile, message);
-    }
-
-    public void warning(Boolean toFile) {
-        chooseOutput(toFile, message);
-    }
-
-    public void error(Boolean toFile) {
-        chooseOutput(toFile, message);
-    }
-
-    private String readFromSettingsFile() {
-        try (FileInputStream stream = new FileInputStream("settings.info")) {
-            StringBuilder content = new StringBuilder();
-            int data;
-            while ((data = stream.read()) != -1) {
-                content.append((char) data);
+        this.isToFile = "true".equals(this.parseToCommand().get("writeToFile"));
+        this.level = LogLevel.valueOf(this.parseToCommand().get("levelOfLog").toUpperCase(Locale.ROOT));
+        if (isToFile) {
+            try {
+                this.stream = new FileOutputStream("output.log", true);
+            } catch (IOException e) {
+                throw new RuntimeException("Error opening the file for writing.", e);
             }
-            return content.toString();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } else {
+            this.stream = System.out;
         }
     }
 
-    public Map<String, String> parseToCommand() {
-        String content = readFromSettingsFile();
+
+    private Map<String, String> parseToCommand() {
+        String content = readSettingsFromFile();
         Map<String, String> param = new HashMap<>();
         String[] lines = content.split("\n");
 
@@ -71,16 +52,61 @@ public class Logger {
         }
         return param;
     }
-    public void chooseOutput(Boolean toFile, String inputInfo) {
-        if (toFile) {
-            try (FileOutputStream stream = new FileOutputStream("output.log")) {
-                stream.write(inputInfo.getBytes(StandardCharsets.UTF_8));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+
+    private String readSettingsFromFile() {
+        try (FileInputStream stream = new FileInputStream("settings.info")) {
+            StringBuilder content = new StringBuilder();
+            int data;
+            while ((data = stream.read()) != -1) {
+                content.append((char) data);
             }
-        } else {
-            System.out.println(inputInfo);
+            return content.toString();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
+    public void debug(String message) {
+        if (level.compareTo(LogLevel.DEBUG) == 0) {
+            writeTo(message);
+        }
+    }
+
+    public void info(String message) {
+        if (level.compareTo(LogLevel.INFO) <= 0) {
+            writeTo(message);
+        }
+    }
+
+    public void warning(String message) {
+        if (level.compareTo(LogLevel.WARNING) <= 0) {
+            writeTo(message);
+        }
+    }
+
+    public void error(String message) {
+        if (level.compareTo(LogLevel.ERROR) <= 0) {
+            writeTo(message);
+        }
+    }
+
+    public void writeTo(String message) {
+        try {
+           stream.write(message.getBytes(StandardCharsets.UTF_8));
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    @Override
+    public void close() {
+        try {
+            if (stream != System.out) {
+                stream.close();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
+

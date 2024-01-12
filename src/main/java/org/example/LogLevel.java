@@ -1,6 +1,6 @@
 package org.example;
 
-public enum Title {
+public enum LogLevel {
     DEBUG,
     INFO,
     WARNING,

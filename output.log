@@ -1,0 +1,49 @@
+2024-01-12 23:40:01 
+Environment values :
+USERDOMAIN_ROAMINGPROFILE = DESKTOP-R0GBO5V
+LOCALAPPDATA = C:\Users\Jeremi\AppData\Local
+PROCESSOR_LEVEL = 6
+IntelliJ IDEA = C:\Program Files\JetBrains\IntelliJ IDEA 2023.2.5\bin;
+USERDOMAIN = DESKTOP-R0GBO5V
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
+LOGONSERVER = \\DESKTOP-R0GBO5V
+JAVA_HOME = C:\Users\Jeremi\.jdks\openjdk-21
+SESSIONNAME = Console
+ALLUSERSPROFILE = C:\ProgramData
+PROCESSOR_ARCHITECTURE = AMD64
+PSModulePath = C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+SystemDrive = C:
+APPDATA = C:\Users\Jeremi\AppData\Roaming
+USERNAME = Jeremi
+ProgramFiles(x86) = C:\Program Files (x86)
+CommonProgramFiles = C:\Program Files\Common Files
+Path = C:\Program Files (x86)\VMware\VMware Workstation\bin\;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Git\cmd;C:\Users\Jeremi\Downloads\gradle-8.4-bin\gradle-8.4\bin;C:\Users\Jeremi\.jdks\openjdk-21;C:\Users\Jeremi\AppData\Local\Microsoft\WindowsApps;;C:\Users\Jeremi\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2023.2.5\bin;
+FPS_BROWSER_USER_PROFILE_STRING = Default
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+DriverData = C:\Windows\System32\Drivers\DriverData
+OS = Windows_NT
+COMPUTERNAME = DESKTOP-R0GBO5V
+PROCESSOR_REVISION = 3a09
+CommonProgramW6432 = C:\Program Files\Common Files
+ComSpec = C:\Windows\system32\cmd.exe
+ProgramData = C:\ProgramData
+ProgramW6432 = C:\Program Files
+HOMEPATH = \Users\Jeremi
+SystemRoot = C:\Windows
+TEMP = C:\Temp
+HOMEDRIVE = C:
+PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+USERPROFILE = C:\Users\Jeremi
+TMP = C:\Temp
+CommonProgramFiles(x86) = C:\Program Files (x86)\Common Files
+ProgramFiles = C:\Program Files
+PUBLIC = C:\Users\Public
+NUMBER_OF_PROCESSORS = 4
+windir = C:\Windows
+SUPPORT_JAVA = www.google.com
+=:: = ::\
+IDEA_INITIAL_DIRECTORY = C:\Users\Jeremi\Desktop
+
+Info message is: 
+Warning message is: 
+Error message is: 

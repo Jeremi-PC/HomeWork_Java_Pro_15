@@ -14,12 +14,13 @@ public class Main {
             String envValue = System.getenv().get(envName);
             logMessage.append(envName).append(" = ").append(envValue).append("\n");
         }
-        Logger logger = new Logger();
-        logger.writeTo(logger.getDateNow() + " " + logger.getTimeNow() + " " + logMessage + "\n");
-        logger.debug("Debug message is: \n");
-        logger.info("Info message is: \n");
-        logger.warning("Warning message is: \n");
-        logger.error("Error message is: \n");
+        try (Logger logger = new Logger()) {
+            logger.writeTo(logger.getDateNow() + " " + logger.getTimeNow() + " " + logMessage + "\n");
+            logger.debug("Debug message is: \n");
+            logger.info("Info message is: \n");
+            logger.warning("Warning message is: \n");
+            logger.error("Error message is: \n");
+        }
 
 
     }
